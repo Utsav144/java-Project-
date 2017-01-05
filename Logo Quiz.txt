@@ -1,0 +1,127 @@
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class LogoQuiz extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+					LogoQuiz frame = new LogoQuiz();
+					frame.setVisible(true);
+		
+	}
+	private void askToLeave(){
+		int choice = JOptionPane.showConfirmDialog(this, "Do u Really want to Exit","GameZone-2016",JOptionPane.YES_NO_OPTION);
+		if(choice == JOptionPane.YES_OPTION){
+			this.setVisible(false);
+			this.dispose();
+		}
+		else
+		{
+			return ;
+		}
+	}
+	private void askForAnswer(String correctAnswer, String imageName,JButton b1){
+		AnsFrame ans = new AnsFrame(correctAnswer,imageName, b1);
+		ans.setVisible(true);
+	}
+	/**
+	 * Create the frame.
+	 */
+	public LogoQuiz() {
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				askToLeave();
+			}
+		});
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 564, 491);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton b1 = new JButton("");
+		b1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			askForAnswer("PizzaHut","pizzahut.jpg",b1);
+			}
+		});
+		b1.setBorder(new LineBorder(Color.GREEN, 2));
+		b1.setIcon(new ImageIcon(LogoQuiz.class.getResource("pizzahut.jpg")));
+		b1.setBounds(25, 53, 147, 131);
+		contentPane.add(b1);
+		
+		JButton b2 = new JButton("");
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				askForAnswer("Mcdonald","mcd.jpg",b2);
+			}
+		});
+		b2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		b2.setBounds(234, 53, 147, 131);
+		b2.setIcon(new ImageIcon(LogoQuiz.class.getResource("mcd.jpg")));
+		contentPane.add(b2);
+		
+		JButton b3 = new JButton("");
+		b3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				askForAnswer("Dominoes","Dominoes.png",b3);
+			}
+		});
+		b3.setBackground(Color.RED);
+		b3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		b3.setBounds(25, 257, 147, 131);
+		b3.setIcon(new ImageIcon(LogoQuiz.class.getResource("Dominoes.png")));
+		contentPane.add(b3);
+		
+		JButton b4 = new JButton("");
+		b4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				askForAnswer("Kfc","Kfc.png",b4);
+			}
+		});
+		b4.setBackground(Color.DARK_GRAY);
+		b4.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		b4.setBounds(234, 257, 147, 131);
+		b4.setIcon(new ImageIcon(LogoQuiz.class.getResource("Kfc.png")));
+		contentPane.add(b4);
+		
+		JButton b5 = new JButton("");
+		b5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				askForAnswer("pantene","pantene.jpg",b5);
+			}
+		});
+		b5.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		b5.setBounds(401, 53, 147, 131);
+		b5.setIcon(new ImageIcon(LogoQuiz.class.getResource("pantene.jpg")));
+		contentPane.add(b5);
+		
+		JButton b6 = new JButton("");
+		b6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				askForAnswer("Olay","Olay.png",b6);
+			}
+		});
+		b6.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		b6.setBackground(Color.DARK_GRAY);
+		b6.setBounds(401, 257, 147, 131);
+		b6.setIcon(new ImageIcon(LogoQuiz.class.getResource("Olay.png")));
+		contentPane.add(b6);
+	}
+}
